@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}{{ category|title }}{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-6 py-16">
+  <h1 class="text-6xl font-black text-center mb-16">{{ category|title }} Collection</h1>
+  
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
+    {% for product in products %}
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition">
+      <img src="{{ product.image or 'https://via.placeholder.com/400' }}" class="w-full h-80 object-cover">
+      <div class="p-6">
+        <h3 class="font-bold text-lg">{{ product.name }}</h3>
+        <p class="text-2xl font-black text-red-600 mt-2">GHS {{ product.price }}</p>
+        {% if product.stock > 0 %}
+          <p class="text-green-600 text-sm">In Stock</p>
+        {% else %}
+          <p class="text-red-600 text-sm">Out of Stock</p>
+        {% endif %}
+      </div>
+    </div>
+    {% else %}
+    <p class="text-center col-span-4 text-xl text-gray-500">No products yet. Add some in admin!</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

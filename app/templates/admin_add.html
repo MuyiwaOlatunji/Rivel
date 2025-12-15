@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-2xl mx-auto py-16">
+  <h1 class="text-4xl font-bold text-center mb-10">Add New Product</h1>
+  <form method="POST" enctype="multipart/form-data" class="bg-white p-10 rounded-2xl shadow-xl">
+    <input type="text" name="name" placeholder="Product Name" class="w-full p-4 border rounded-lg mb-4" required>
+    <input type="number" step="0.01" name="price" placeholder="Price (GHS)" class="w-full p-4 border rounded-lg mb-4" required>
+    <input type="number" name="stock" placeholder="Stock Quantity" class="w-full p-4 border rounded-lg mb-4" required>
+    <input type="file" name="image" accept="image/*" class="w-full p-4 border rounded-lg mb-4" required>
+    <select name="category" class="w-full p-4 border rounded-lg mb-4">
+      <option value="women">Women</option>
+      <option value="men">Men</option>
+      <option value="kids">Kids & Babies</option>
+      <option value="electronics">Electronics</option>
+    </select>
+    <input type="text" name="subcategory" placeholder="Subcategory (e.g. Dresses)" class="w-full p-4 border rounded-lg mb-4">
+    <textarea name="description" placeholder="Description" class="w-full p-4 border rounded-lg mb-6"></textarea>
+    <button class="w-full bg-red-600 text-white py-5 text-xl font-bold rounded-lg hover:bg-red-700">Add Product</button>
+  </form>
+</div>
+{% endblock %}

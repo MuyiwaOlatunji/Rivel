@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}YourStore{% endblock %} – Ghana's No.1 Mall</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: { primary: '#e50010', dark: '#111111' }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="font-sans text-dark bg-white">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white border-b shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-2xl font-black text-primary">YourStore</a>
+        <nav class="hidden md:flex space-x-8 font-medium">
+          <a href="/" class="hover:text-primary">Home</a>
+          <a href="/shop" class="hover:text-primary">Shop All</a>
+          <a href="/women" class="hover:text-primary">Women</a>
+          <a href="/men" class="hover:text-primary">Men</a>
+          <a href="/kids" class="hover:text-primary">Kids</a>
+          <a href="/electronics" class="hover:text-primary">Electronics</a>
+        </nav>
+        <div class="flex items-center space-x-6">
+          <a href="/cart" class="relative">
+            <i class="fas fa-bag-shopping text-xl"></i>
+            <span class="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {% block content %}{% endblock %}
+
+  <!-- FOOTER -->
+  <footer class="bg-dark text-white py-12 mt-20">
+    <div class="text-center">
+      <p class="text-2xl font-bold mb-2">YourStore Ghana</p>
+      <p>MoMo • Cards • Bank Transfer • USD/EUR Accepted</p>
+      <p class="mt-4 text-gray-400">© 2025 All Rights Reserved</p>
+    </div>
+  </footer>
+</body>
+</html>

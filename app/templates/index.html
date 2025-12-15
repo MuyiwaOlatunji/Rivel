@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="relative h-screen">
+  <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920" class="w-full h-full object-cover" alt="Hero">
+  <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/80 flex items-center justify-center text-center text-white px-6">
+    <div>
+      <h1 class="text-5xl md:text-8xl font-black mb-6">NEW SEASON</h1>
+      <p class="text-2xl md:text-4xl mb-10">Fashion • Electronics • Kids • Beauty</p>
+      <a href="/shop" class="bg-red-600 text-white px-16 py-6 text-2xl font-bold rounded-full hover:bg-red-700">SHOP NOW</a>
+    </div>
+  </div>
+</div>
+
+<div class="py-20 text-center bg-gray-50">
+  <h2 class="text-5xl font-bold mb-16">Shop by Category</h2>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-10 max-w-6xl mx-auto px-6">
+    <a href="/women" class="group">
+      <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600" class="rounded-2xl shadow-2xl group-hover:scale-105 transition">
+      <p class="mt-6 text-2xl font-bold">Women</p>
+    </a>
+    <a href="/men" class="group">
+      <img src="https://images.unsplash.com/photo-1505028106030-9478eb47c9e4?w=600" class="rounded-2xl shadow-2xl group-hover:scale-105 transition">
+      <p class="mt-6 text-2xl font-bold">Men</p>
+    </a>
+    <a href="/kids" class="group">
+      <img src="https://images.unsplash.com/photo-1622290291469-7d07f5c6c2d9?w=600" class="rounded-2xl shadow-2xl group-hover:scale-105 transition">
+      <p class="mt-6 text-2xl font-bold">Kids & Babies</p>
+    </a>
+    <a href="/electronics" class="group">
+      <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600" class="rounded-2xl shadow-2xl group-hover:scale-105 transition">
+      <p class="mt-6 text-2xl font-bold">Electronics</p>
+    </a>
+  </div>
+</div>
+{% endblock %}

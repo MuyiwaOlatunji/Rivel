@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-7xl mx-auto px-6 py-12">
+  <div class="flex justify-between items-center mb-10">
+    <h1 class="text-4xl font-bold">Admin Dashboard</h1>
+    <a href="/admin/add" class="bg-red-600 text-white px-8 py-3 rounded-lg text-xl">+ Add Product</a>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    {% for p in products %}
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+      <img src="{{ p.image or 'https://via.placeholder.com/400' }}" class="w-full h-64 object-cover">
+      <div class="p-6">
+        <h3 class="font-bold text-xl">{{ p.name }}</h3>
+        <p class="text-2xl font-black text-red-600">GHS {{ p.price }}</p>
+        <p>Stock: <strong>{{ p.stock }}</strong></p>
+        <p>Category: {{ p.category }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
