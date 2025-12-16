@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="text-4xl font-bold mb-8">Checkout</h1>
+<form method="POST" action="/pay">
+  <input type="text" name="name" placeholder="Full Name" class="w-full p-4 border rounded-lg mb-4" required>
+  <input type="email" name="email" placeholder="Email" class="w-full p-4 border rounded-lg mb-4" required>
+  <input type="text" name="phone" placeholder="Phone (e.g. 0241234567)" class="w-full p-4 border rounded-lg mb-6" required>
+  <p class="text-2xl font-bold mb-6">Total: GHS {{ total }}</p>
+  <button class="w-full bg-primary text-white py-6 text-2xl font-bold rounded-xl">Pay with Flutterwave</button>
+</form>
+{% endblock %}
