@@ -1,11 +1,9 @@
-# app/routes/__init__.py
-from flask import app
+# app/routes/__init__.py  ← CORRECT — ONLY EXPORTS BLUEPRINTS
+# DO NOT register blueprints here!
+
 from .main import main
 from .admin import admin
-from ..routes.cart import cart
-from ..routes.payments import payments
-app.register_blueprint(main)
-app.register_blueprint(cart)
-app.register_blueprint(payments)
+# from .cart import cart  # add later when you create it
+# from .payments import payments  # add later
 
 __all__ = ['main', 'admin']
