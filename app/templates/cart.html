@@ -1,18 +1,32 @@
 {% extends "base.html" %}
+{% block title %}Your Cart{% endblock %}
+
 {% block content %}
-<h1 class="text-4xl font-bold mb-8">Your Cart</h1>
-<div class="space-y-6">
-  {% for item in items %}
-  <div class="flex gap-6 bg-white p-6 rounded-xl shadow">
-    <img src="{{ item.product.image }}" class="w-32 h-32 object-cover rounded">
-    <div class="flex-1">
-      <h3 class="font-bold text-xl">{{ item.product.name }}</h3>
-      <p>GHS {{ item.product.price }} × {{ item.quantity }}</p>
+<div class="max-w-4xl mx-auto px-6 py-16">
+  <h1 class="text-5xl font-black mb-12">Your Shopping Cart</h1>
+  
+  {% if cart_items %}
+    <div class="space-y-8">
+      {% for item in cart_items %}
+      <div class="flex gap-6 bg-white p-6 rounded-2xl shadow-lg">
+        <img src="{{ item.product.image }}" class="w-32 h-32 object-cover rounded-xl">
+        <div class="flex-1">
+          <h3 class="text-xl font-bold">{{ item.product.name }}</h3>
+          <p class="text-gray-600">Quantity: {{ item.quantity }}</p>
+        </div>
+        <p class="text-2xl font-bold text-primary">GHS {{ item.product.price * item.quantity }}</p>
+      </div>
+      {% endfor %}
     </div>
-    <p class="text-2xl font-bold">GHS {{ item.product.price * item.quantity }}</p>
-  </div>
-  {% endfor %}
-  <div class="text-right text-3xl font-black">Total: GHS {{ total }}</div>
-  <a href="/checkout" class="bg-primary text-white px-12 py-5 text-xl rounded-full">Proceed to Checkout</a>
+    <div class="text-right mt-12">
+      <p class="text-3xl font-black">Total: GHS {{ total }}</p>
+      <a href="/checkout" class="inline-block mt-6 bg-primary text-white px-12 py-5 text-xl font-bold rounded-full">Proceed to Checkout</a>
+    </div>
+  {% else %}
+    <p class="text-center text-2xl text-gray-500">Your cart is empty</p>
+    <div class="text-center mt-8">
+      <a href="/" class="bg-primary text-white px-12 py-5 text-xl rounded-full">Continue Shopping</a>
+    </div>
+  {% endif %}
 </div>
 {% endblock %}

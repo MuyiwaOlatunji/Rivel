@@ -11,7 +11,10 @@
       <img src="{{ product.image or 'https://via.placeholder.com/400' }}" class="w-full h-80 object-cover">
       <div class="p-6">
         <h3 class="font-bold text-lg">{{ product.name }}</h3>
-        <p class="text-2xl font-black text-red-600 mt-2">GHS {{ product.price }}</p>
+        <p class="text-2xl font-black text-red-600 mt-2">GHS {{ product.price }}</p> 
+              <button class="add-to-cart mt-4 w-full bg-primary text-white py-3 rounded-lg font-bold hover:bg-red-700" data-id="{{ product.id }}">
+        Add to Cart
+       </button>
         {% if product.stock > 0 %}
           <p class="text-green-600 text-sm">In Stock</p>
         {% else %}
