@@ -40,9 +40,11 @@ def create_app():
     # Import and register blueprints
     from .routes.main import main
     from .routes.admin import admin
+    from .routes.cart import cart
 
     app.register_blueprint(main)
     app.register_blueprint(admin, url_prefix='/admin')  # This creates /admin/login
+    app.register_blueprint(cart)
 
     with app.app_context():
         db.create_all()
