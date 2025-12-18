@@ -3,11 +3,14 @@
 
 {% block content %}
 <div class="max-w-4xl mx-auto px-6 py-16">
-  <h1 class="text-5xl font-black mb-12">Your Shopping Cart</h1>
-  
-  {% if cart_items %}
+  <div class="flex justify-between items-center mb-12">
+    <h1 class="text-5xl font-bold">Your Cart</h1>
+    <button id="clear-cart" class="bg-red-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-red-700">Clear Cart</button>
+  </div>
+
+  {% if items %}
     <div class="space-y-8">
-      {% for item in cart_items %}
+      {% for item in items %}
       <div class="flex gap-6 bg-white p-6 rounded-2xl shadow-lg">
         <img src="{{ item.product.image }}" class="w-32 h-32 object-cover rounded-xl">
         <div class="flex-1">
@@ -20,7 +23,7 @@
     </div>
     <div class="text-right mt-12">
       <p class="text-3xl font-black">Total: GHS {{ total }}</p>
-      <a href="/checkout" class="inline-block mt-6 bg-primary text-white px-12 py-5 text-xl font-bold rounded-full">Proceed to Checkout</a>
+      <a href="/checkout" class="inline-block mt-6 bg-primary text-white px-12 py-5 text-xl rounded-full">Proceed to Checkout</a>
     </div>
   {% else %}
     <p class="text-center text-2xl text-gray-500">Your cart is empty</p>
@@ -29,4 +32,4 @@
     </div>
   {% endif %}
 </div>
-{% endblock %};
+{% endblock %}

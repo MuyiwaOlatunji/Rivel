@@ -15,6 +15,15 @@
       }
     }
   </script>
+  <style>
+  @keyframes slide-in-right {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  .animate-slide-in-right {
+    animation: slide-in-right 0.4s ease-out;
+  }
+</style>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
@@ -34,10 +43,10 @@
           <a href="/electronics" class="hover:text-primary">Electronics</a>
         </nav>
         <div class="flex items-center space-x-6">
-          <a href="/cart" class="relative">
-            <i class="fas fa-bag-shopping text-xl"></i>
-            <span class="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
-          </a>
+        <a href="/cart" class="relative">
+          <i class="fas fa-shopping-bag text-2xl"></i>
+          <span class="cart-badge absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-6 h-6 flex items-center justify-center">0</span>
+        </a>
         </div>
       </div>
     </div>
@@ -53,5 +62,8 @@
       <p class="mt-4 text-gray-400">© 2025 All Rights Reserved</p>
     </div>
   </footer>
+    <!-- External JavaScript -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
 </body>
 </html>
