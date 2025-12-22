@@ -1,16 +1,28 @@
 {% extends "base.html" %}
-{% block title %}Checkout{% endblock %}
 
 {% block content %}
 <div class="max-w-2xl mx-auto px-6 py-16">
   <h1 class="text-5xl font-bold text-center mb-12">Checkout</h1>
-  <form class="bg-white p-10 rounded-2xl shadow-xl space-y-6">
-    <input type="text" placeholder="Full Name" class="w-full p-4 border rounded-lg" required>
-    <input type="email" placeholder="Email" class="w-full p-4 border rounded-lg" required>
-    <input type="tel" placeholder="Phone Number" class="w-full p-4 border rounded-lg" required>
-    <textarea placeholder="Delivery Address" class="w-full p-4 border rounded-lg" rows="4" required></textarea>
-    <div class="text-right text-3xl font-black mb-8">Total: GHS {{ total }}</div>
-    <button class="w-full bg-primary text-white py-6 text-2xl font-bold rounded-xl hover:bg-red-700">Pay with Flutterwave</button>
-  </form>
+  
+  <div class="bg-white p-10 rounded-2xl shadow-xl">
+    <div class="text-right text-3xl font-black mb-8">
+      Total: GHS {{ total }}
+    </div>
+
+    <form method="POST" action="/pay" class="space-y-6">
+      <input type="text" name="name" placeholder="Full Name" class="w-full p-4 border rounded-lg" required>
+      <input type="email" name="email" placeholder="Email" class="w-full p-4 border rounded-lg" required>
+      <input type="tel" name="phone" placeholder="Phone Number (e.g. 0241234567)" class="w-full p-4 border rounded-lg" required>
+      <textarea name="address" placeholder="Delivery Address" class="w-full p-4 border rounded-lg" rows="4" required></textarea>
+      
+      <button type="submit" class="w-full bg-primary text-white py-6 text-2xl font-bold rounded-xl hover:bg-red-700">
+        Pay with Flutterwave
+      </button>
+    </form>
+  </div>
+  
+  <div class="text-center mt-8">
+    <a href="/cart" class="text-primary hover:underline">← Back to Cart</a>
+  </div>
 </div>
 {% endblock %}

@@ -1,4 +1,4 @@
-# app/__init__.py  ← FINAL WORKING VERSION — GUARANTEED
+# app/__init__.py — FINAL NO CIRCULAR IMPORT
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -11,7 +11,6 @@ migrate = Migrate()
 login_manager = LoginManager()
 bcrypt = Bcrypt()
 
-# THIS LINE WAS MISSING — THIS FIXES /admin/login 404
 @login_manager.user_loader
 def load_user(user_id):
     from .models import User
@@ -20,7 +19,6 @@ def load_user(user_id):
 def create_app():
     app = Flask(__name__)
     
-    # Safe DB path
     basedir = os.path.abspath(os.path.dirname(__file__))
     db_path = os.path.join(basedir, '..', 'store.db')
     
@@ -28,23 +26,21 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    # Init extensions
     db.init_app(app)
     migrate.init_app(app, db)
     login_manager.init_app(app)
     bcrypt.init_app(app)
-
-    # THIS LINE WAS MISSING — THIS MAKES /admin/login WORK
     login_manager.login_view = 'admin.login'
 
-    # Import and register blueprints
     from .routes.main import main
     from .routes.admin import admin
     from .routes.cart import cart
+    from .routes.payments import payments
 
     app.register_blueprint(main)
-    app.register_blueprint(admin, url_prefix='/admin')  # This creates /admin/login
+    app.register_blueprint(admin, url_prefix='/admin')
     app.register_blueprint(cart)
+    app.register_blueprint(payments)
 
     with app.app_context():
         db.create_all()

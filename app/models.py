@@ -1,6 +1,6 @@
-# app/models.py — UPDATE WITH THIS
+# app/models.py — FINAL CORRECT VERSION
 from flask_login import UserMixin
-from . import db
+from . import db  # <-- Import db from app/__init__.py
 from datetime import datetime
 
 class User(UserMixin, db.Model):
@@ -22,17 +22,8 @@ class Product(db.Model):
     active = db.Column(db.Boolean, default=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-class CartItem(db.Model):
+class ViewHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)  # Guest cart = null
-    session_id = db.Column(db.String(100))  # For guests
+    email = db.Column(db.String(150))
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
-    quantity = db.Column(db.Integer, default=1)
-
-class Order(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    total = db.Column(db.Float)
-    status = db.Column(db.String(50), default='pending')
-    tx_ref = db.Column(db.String(100))
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    viewed_at = db.Column(db.DateTime, default=datetime.utcnow)

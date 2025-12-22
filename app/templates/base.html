@@ -3,7 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}YourStore{% endblock %} – Ghana's No.1 Mall</title>
+  <meta name="description" content="RIVEL Ghana - Premium fashion, electronics, kids clothing & beauty products. Fast nationwide delivery. Pay with MoMo, Card or Bank Transfer.">
+  <meta name="keywords" content="fashion ghana, online shopping accra, kids clothing, electronics ghana, beauty products, rivel ghana">
+  <meta name="author" content="RIVEL Ghana">
+  <meta name="robots" content="index, follow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='images/rivel_logo.jpg') }}">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/rivel_logo.jpg') }}">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ request.url }}">
+  <meta property="og:title" content="RIVEL Ghana - Premium Online Shopping">
+  <meta property="og:description" content="Shop the latest fashion, electronics, and kids items in Ghana with fast delivery.">
+  <meta property="og:image" content="{{ url_for('static', filename='images/rivel_logo.jpg') }}">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="{{ request.url }}">
+  <meta property="twitter:title" content="RIVEL Ghana">
+  <meta property="twitter:description" content="Premium online shopping in Ghana">
+  <meta property="twitter:image" content="{{ url_for('static', filename='images/rivel_logo.jpg') }}">
+
+  <title>{% block title %}RIVEL{% endblock %} – Ghana's Premium Online Mall</title>
+
+  <!-- Tailwind + Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -16,14 +41,14 @@
     }
   </script>
   <style>
-  @keyframes slide-in-right {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-  }
-  .animate-slide-in-right {
-    animation: slide-in-right 0.4s ease-out;
-  }
-</style>
+    @keyframes slide-in-right {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    .animate-slide-in-right {
+      animation: slide-in-right 0.4s ease-out;
+    }
+  </style>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
@@ -33,20 +58,25 @@
   <header class="sticky top-0 z-50 bg-white border-b shadow-sm">
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
       <div class="flex justify-between items-center h-16">
-        <a href="/" class="text-2xl font-black text-primary">RIVEL</a>
+        <!-- LOGO -->
+        <a href="/" class="flex items-center">
+          <img src="{{ url_for('static', filename='images/rivel_logo.jpg') }}" alt="RIVEL Ghana" class="h-12">
+        </a>
+
         <nav class="hidden md:flex space-x-8 font-medium">
           <a href="/" class="hover:text-primary">Home</a>
-          <a href="/shop" class="hover:text-primary">Style Scouts</a>
+          <a href="/shop" class="hover:text-primary">Style Scout</a>
           <a href="/women" class="hover:text-primary">Women</a>
           <a href="/men" class="hover:text-primary">Men</a>
           <a href="/kids" class="hover:text-primary">Kids</a>
           <a href="/electronics" class="hover:text-primary">Electronics</a>
         </nav>
+
         <div class="flex items-center space-x-6">
-        <a href="/cart" class="relative">
-          <i class="fas fa-shopping-bag text-2xl"></i>
-          <span class="cart-badge absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-6 h-6 flex items-center justify-center">0</span>
-        </a>
+          <a href="/cart" class="relative">
+            <i class="fas fa-shopping-bag text-2xl"></i>
+            <span class="cart-badge absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-6 h-6 flex items-center justify-center">0</span>
+          </a>
         </div>
       </div>
     </div>
@@ -57,12 +87,13 @@
   <!-- FOOTER -->
   <footer class="bg-dark text-white py-12 mt-20">
     <div class="text-center">
-      <p class="text-2xl font-bold mb-2">YourStore Ghana</p>
+      <p class="text-2xl font-bold mb-2">RIVEL Ghana</p>
       <p>MoMo • Cards • Bank Transfer • USD/EUR Accepted</p>
-      <p class="mt-4 text-gray-400">© 2025 All Rights Reserved</p>
+      <p class="mt-4 text-gray-400">© 2025 RIVEL. All Rights Reserved.</p>
     </div>
   </footer>
-    <!-- External JavaScript -->
+
+  <!-- External JavaScript -->
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
 </body>
